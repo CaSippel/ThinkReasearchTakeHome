@@ -1,24 +1,9 @@
 # README
+* Ruby version 2.4.1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tasks completed:
+* create / edit / remove patients
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Incomplete:
+* edit / show / remove encounters (buggy)
+* sql query (part 2)
