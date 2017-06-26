@@ -1,0 +1,36 @@
+<%= form_for @patient do |f| %>
+
+<!-- check for / display errors
+         need to have @article = Article.new in the ArticlesController
+         else @article would be nil
+-->
+   <% if @article.errors.any? %>
+      <div id="error_explanation">
+         <h2>
+            <%= pluralize(@article.errors.count, "error") %>
+            prohibited this article from being saved:
+         </h2>
+         <ul>
+            <% @article.errors.full_messages.each do |msg| %>
+               <li><%= msg %></li>
+            <% end %>
+         </ul>
+      </div>
+   <% end %>
+   
+<!-- showing information -->
+   <p>
+      <!-- old... f.label :name, f.text_area :text -->
+      <%= text_area_tag(:first_name, "First Name:") %>
+      <%= text_area_tag(:middle_name, "Middle Name:") %>
+      <%= text_area_tag(:last_name, "Last Name:") %>
+      <%= number_field(:weight, :wt, in: 0.0..1000.0, step: 1.0) %>
+      <%= number_field(:height, :ht, in: 1.0..1000.0, step: 1.0) %>
+      <%= text_area_tag(:mrn, "MRN:") %>
+   </p>
+                
+   <p>
+      <%= f.submit %>
+      <!-- < % = submit_tag("Cancel") %> -->
+   </p>
+<% end %>

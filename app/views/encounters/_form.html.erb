@@ -1,0 +1,27 @@
+<%= form_for([@patient, @patient.encounters.build]) do |f| %>
+   
+   <p>
+      <%= f.label :visit_number, '*Visit Number:' %>
+      <%= f.text_field :visit_number %>,
+   
+      <%= f.label :admitted_at, '*Admitted At:' %>
+      <%= f.datetime_local_field :admitted_at %>,
+
+      <%= f.label :discharged_at, 'Discharged At:' %>
+      <%= f.datetime_local_field :discharged_at %>,
+
+      <%= f.label :location, 'Location:' %>
+      <%= f.text_field :location %>,
+
+      <%= f.label :room, 'Room:' %>
+      <%= f.select :room, (1..100).to_a %>,
+
+      <%= f.label :bed, 'Bed:' %>
+      <%= f.select :bed, (1..10).to_a %>
+   </p>
+   <p>
+      <%= f.submit %>
+   </p>
+<% end %>
+
+<%= link_to 'Back', @patient %>

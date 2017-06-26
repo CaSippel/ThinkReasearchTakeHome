@@ -1,0 +1,48 @@
+<b>First Name:</b>
+<%= @patient.first_name %>,
+
+<b>Middle Name:</b>
+<%= @patient.middle_name %>,
+
+<strong>Last Name:</strong>
+<%= @patient.last_name %>,
+
+<b>Weight:</b>
+<%= @patient.weight %>,
+
+<b>Height:</b>
+<%= @patient.height %>,
+
+<b>MRN:</b>
+<%= @patient.mrn %>
+
+<br>
+<%= link_to 'Edit', edit_patient_path(@patient) %>
+
+<br>
+<h2>Encounters</h2>
+ <%= link_to "Add Encounter", new_patient_encounter_path(@patient.id) %>
+<br>
+<!-- < %= link_to 'encounters/form' %><br> -->
+<table>
+   <tr>
+      <th>Visit Number</th>
+      <th>Admitted At</th>
+      <th>Discharged At</th>
+      <th colspan="3">Actions</th>
+   </tr>
+
+   <% @patient.encounters.each do |e| %>
+      <tr>
+         <td><%= e.visit_number %></td>
+         <td><%= e.admitted_at %></td>
+         <td><%= e.discharged_at %></td>
+         <td><%= link_to 'Show', patient_encounter_path(@patient.id) %> |</td>
+         <td><%= link_to 'Edit', edit_patient_encounter_path(@patient.id) %> |</td>
+         <td><%= link_to 'Destroy' %></td>
+      </tr>
+   <% end %>
+</table>
+
+<br>
+<%= link_to 'Back To All Patients', patients_path %>

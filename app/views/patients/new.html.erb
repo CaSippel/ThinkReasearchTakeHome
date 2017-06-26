@@ -1,0 +1,48 @@
+<h1>New Patient</h1>
+
+<!-- < % = render 'form' %> -->
+<%= form_for :patient, url: patients_path do |f| %>
+   <% if @patient.errors.any? %>
+      <div id="error_explanation">
+         <h2>
+            <%= pluralize(@patient.errors.count, "error") %> 
+            prohibited this data from being saved:
+         </h2>
+         <ul>
+            <% @patient.errors.full_messages.each do |msg| %>
+               <li><%= msg %></li>
+            <% end %>
+         </ul>
+      </div>
+   <% end %>
+<!-- showing information -->
+   <p>
+      <!-- old... f.label :name, f.text_area :text -->
+      <%= f.label :first_name, '*First Name:' %>
+      <%= f.text_field :first_name %>,
+
+      <%= f.label :middle_name, '*Middle Name:' %>
+      <%= f.text_field :middle_name %>,
+
+      <%= f.label :last_name, 'Last Name:' %>
+      <%= f.text_field :last_name %>,
+
+      <%= f.label :weight, 'Weight (lbs):' %>
+      <%= f.select :weight, (0..1000).to_a %>,
+
+      <%= f.label :height, 'Height (cm):' %>
+      <%= f.select :height, (0..1000).to_a %>,
+
+      <%= f.label :mrn, '*MRN:' %>
+      <%= f.text_field :mrn %>
+   </p>
+                
+   <p> * fields are required </p>
+   <p>
+      <%= submit_tag("Submit") %>
+      <%= submit_tag("Cancel") %>
+   </p>
+
+<% end %>
+
+<!-- < %= link_to 'Back', patients_path %> -->
